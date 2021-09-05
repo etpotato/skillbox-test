@@ -1,8 +1,6 @@
-@font-face {
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("../fonts/Roboto-400.woff2") format("woff2"),
-    url("../fonts/Roboto-400.woff") format("woff");
-}
+@include font-face("Roboto", "../fonts/Roboto-400", swap, normal, 400);
+@include font-face("Roboto", "../fonts/Roboto-700", swap, normal, 700);
+@include font-face("RobotoSlab", "../fonts/RobotoSlab-300", swap, normal, 300);
+@include font-face("RobotoSlab", "../fonts/RobotoSlab-400", swap, normal, 400);
+@include font-face("OpenSans", "../fonts/OpenSans-400", swap, normal, 400);
+@include font-face("OpenSans", "../fonts/OpenSans-600", swap, normal, 600);

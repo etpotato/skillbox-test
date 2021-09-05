@@ -117,12 +117,7 @@ const styles = () => {
 /* scripts */
 const js = () => {
   return gulp.src('./src/js/**/*.js')
-    .pipe(webpack( webpackConfig
-      // require('./webpack.config.js')
-    //  compiler, (err, stats) => {
-    //   console.log(stats.compiler);
-    // }
-    ))
+    .pipe(webpack(webpackConfig))
     .pipe(gulp.dest('./build/js/'))
     .pipe(sync.stream());
 };
