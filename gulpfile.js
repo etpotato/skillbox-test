@@ -123,6 +123,11 @@ const js = () => {
 };
 
 /* copy */
+const copyAssets = () => {
+  return gulp.src('./src/assets/*')
+    .pipe(gulp.dest('./build/assets/'))
+    .pipe(sync.stream());
+}
 const copyFonts = () => {
   return gulp.src('./src/fonts/*')
     .pipe(gulp.dest('./build/fonts/'))
@@ -134,11 +139,11 @@ const copyImages = () => {
     .pipe(sync.stream());
 };
 
-const copy = gulp.parallel(copyFonts, copyImages);
+const copy = gulp.parallel(copyAssets, copyFonts, copyImages);
 
 /* images */
 const webp = () => {
-  return gulp.src('./src/img/**/*.{png,jpg}', {ignore: './src/img/favicon/*'})
+  return gulp.src('./src/img/**/*.{png,jpg}', {ignore: './src/img/favicon/'})
   .pipe(gulpWebp())
   .pipe(gulp.dest('./build/img/'));
 };
@@ -200,5 +205,5 @@ export default gulp.series(
 
 export const build = gulp.series(
   clear,
-  gulp.parallel(gulp.series(inlineSvg, html), styles, copyFonts, optimizeImages, webp, js),
+  gulp.parallel(gulp.series(inlineSvg, html), styles, copyAssets, copyFonts, optimizeImages, webp, js),
 );
