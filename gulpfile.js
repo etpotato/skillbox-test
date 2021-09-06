@@ -32,7 +32,7 @@ const clear = () => {
 
 /* inline svg */
 const inlineSvg = () => {
-  const svgs = gulp.src('./src/img/sprite/*.svg')
+  return gulp.src('./src/img/sprite/*.svg')
     .pipe(imagemin([
       svgo({
         plugins: [
@@ -77,19 +77,17 @@ const inlineSvg = () => {
         dimensionAttributes: true,
       },
      }));
-  const fileContents = (filePath, file) => {
-    return file.contents.toString();
-  };
-  return gulp.src('./src/templates/base.twig')
-    .pipe(inject(svgs, { transform: fileContents }))
-    .pipe(gulp.dest('./src/templates/'))
-    .pipe(sync.stream());
 };
 
 /* html */
 const html = () => {
+  const svgs = inlineSvg();
+  const fileContents = (filePath, file) => {
+    return file.contents.toString();
+  };
   return gulp.src('./src/*.twig')
     .pipe(twig())
+    .pipe(inject(svgs, { transform: fileContents }))
     .pipe(htmlmin({
       collapseWhitespace:  process.env.NODE_ENV === 'production' ? true : false,
     }))
@@ -192,18 +190,18 @@ const watcher = () => {
   gulp.watch('./src/**/*.js', js);
   gulp.watch('./src/fonts/*', copyFonts);
   gulp.watch('./src/img/**/*', {ignore: './src/img/sprite/'}, gulp.parallel(copyImages, webp));
-  gulp.watch('./src/img/sprite/*.svg', inlineSvg);
+  gulp.watch('./src/img/sprite/*.svg', html);
 }
 
 /* export */
 export default gulp.series(
   clear,
-  gulp.parallel(gulp.series(inlineSvg, html), styles, copy, webp, js),
+  gulp.parallel(html, styles, copy, webp, js),
   server,
   watcher,
 );
 
 export const build = gulp.series(
   clear,
-  gulp.parallel(gulp.series(inlineSvg, html), styles, copyAssets, copyFonts, optimizeImages, webp, js),
+  gulp.parallel(html, styles, copyAssets, copyFonts, optimizeImages, webp, js),
 );
