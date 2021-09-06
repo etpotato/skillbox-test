@@ -21,8 +21,8 @@
   @media (hover: hover) {
     &:hover,
     &:focus {
-      color: $color-accent;
-      background-color: $bg-main-light2;
+      border-color: $bg-invert;
+      background-color: $bg-invert;
     }
   }
 }
