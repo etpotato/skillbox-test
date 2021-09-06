@@ -39,7 +39,7 @@
             </div>
           </dl>
         </div>
-        <form class="form order__form" action="/" method="POST" enctype="application/x-www-form-urlencoded">
+        <form class="form order__form js-form" action="/" method="POST" enctype="application/x-www-form-urlencoded">
           <div class="mobile-container">
             <h2 class="form__title">Запишитесь на&nbsp;курс</h2>
             <ul class="form__list">
@@ -58,28 +58,29 @@
               </p>
             </div>
             <label class="form__label">
-              <input class="form__input" data-required="true" type="text" name="NAME" placeholder="Имя">
+              <input class="form__input js-input" data-required="true" data-type="name" type="text" name="NAME" placeholder="Имя">
               <span class="form__label-text">Имя</span>
               <span class="form__error">Пожалуйста, введите Ваше имя</span>
             </label>
             <label class="form__label">
-              <input class="form__input" data-required="true" type="tel" name="TEL" inputmode="tel" placeholder="Телефон">
+              <input class="form__input js-input" data-required="true" data-type="tel" data-mask="tel" type="tel" name="TEL" inputmode="tel" placeholder="Телефон">
               <span class="form__label-text">Телефон</span>
-              <span class="form__error">Введите номер телефона в формате 8 (999) 999-99-99</span>
+              <span class="form__error">Телефон в формате 8 (999) 999-99-99</span>
             </label>
             <label class="form__label">
-              <input class="form__input" data-required="true" type="email" name="EMAIL" inputmode="email" placeholder="Email">
+              <input class="form__input js-input" data-required="true" data-type="email" type="text" name="EMAIL" inputmode="email" placeholder="Email">
               <span class="form__label-text" lang="en">Email</span>
-              <span class="form__error">Введите Ваш email</span>
+              <span class="form__error">Пожалуйста, введите Ваш email</span>
             </label>
             <div class="form__submit-wrap">
               <label class="form__consent">
-                <input class="form__consent-input" type="checkbox" name="CONSENT" value="true" checked>
+                <input class="form__consent-input js-input" data-required="true" data-type="toggle" type="checkbox" name="CONSENT" value="true" checked>
                 <span class="form__consent-text">Я&nbsp;согласен с&nbsp;условиями обработки
                     <a class="form__consent-link" href="assets/google_privacy_policy_en.pdf" target="_blank">персональных данных</a>
                 </span>
+                <span class="form__error">Это поле должно быть заполнено</span>
               </label>
-              <button class="form__submit" type="submit">Записаться</button>
+              <button class="button form__submit" type="submit">Записаться</button>
             </div>
           </div>
         </form>

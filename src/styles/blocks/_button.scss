@@ -1,0 +1,28 @@
+.button {
+  display: block;
+  margin: 0;
+  padding: 2.2rem;
+  width: 100%;
+  border: 2px solid $color-accent;
+  border-radius: 0;
+  font-family: "OpenSans", "Arial", sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.33;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  color: $text-invert;
+  background-color: $color-accent;
+  outline: none;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s, color 0.3s;
+
+  @media (hover: hover) {
+    &:hover,
+    &:focus {
+      color: $color-accent;
+      background-color: $bg-main-light2;
+    }
+  }
+}

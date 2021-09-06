@@ -64,6 +64,11 @@ input {
 .no-scroll {
   max-height: 100vh;
   overflow: hidden;
+
+  @media (min-width: $desktop-width) {
+    max-height: auto;
+    overflow: auto;
+  }
 }
 
 .desktop-only {

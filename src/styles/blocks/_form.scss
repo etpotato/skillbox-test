@@ -12,7 +12,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 5.6rem 13rem 5.4rem 8.2rem;
+    padding: 5.6rem 13rem 3.6rem 8.2rem;
     box-shadow: none;
   }
 }
@@ -152,7 +152,7 @@
 .form__input {
   display: block;
   width: 100%;
-  padding: 1.5rem 2.8rem;
+  padding: 1.7rem 2.8rem 1.3rem;
   border: 2px solid $border;
   border-radius: 0;
   font-family: "OpenSans", "Arial", sans-serif;
@@ -184,7 +184,7 @@
 
 .form__input:focus ~ .form__label-text,
 .form__input:not(:placeholder-shown) ~ .form__label-text {
-  top: 0.6rem;
+  top: 0.8rem;
   color: $color-accent;
   transform: scale(0.7);
   transform-origin: 0 0;
@@ -203,9 +203,9 @@
 
 .form__error {
   position: absolute;
-  bottom: 0.2rem;
+  bottom: 0.3rem;
   left: 0;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   line-height: 1;
   color: $color-error;
   visibility: hidden;
@@ -223,10 +223,15 @@
 .form__consent {
   position: relative;
   display: block;
-  margin-bottom: 4.8rem;
+  margin-bottom: 3rem;
+  padding-bottom: 1.8rem;
+
+  .form__error {
+    bottom: 0;
+  }
 
   @media (min-width: $tablet-width) {
-    margin-bottom: 2.8rem;
+    margin-bottom: 1rem;
   }
 
   @media (min-width: $desktop-width) {
@@ -251,6 +256,25 @@
     }
   }
 
+  &:focus-visible ~ .form__consent-text::before {
+    border-color: $color-accent;
+  }
+
+  &.invalid {
+    & ~ .form__consent-text::before {
+      border-color: $color-error;
+    }
+
+    & ~ .form__error {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    &:focus-visible ~ .form__consent-text::before {
+      border-color: $color-accent;
+    }
+  }
+
   @media (min-width: $tablet-width) {
     &:checked {
       & ~ .form__consent-text {
@@ -261,6 +285,14 @@
         &::after {
           opacity: 1;
         }
+      }
+    }
+
+    &.invalid:focus-visible,
+    &:focus-visible {
+      & ~ .form__consent-text::before {
+        border-color: $border;
+        box-shadow: 0 0 0 2px $color-accent;
       }
     }
   }
@@ -305,6 +337,7 @@
 
   @media (min-width: $tablet-width) {
     padding-left: 3rem;
+
     &::before {
       border-color: $color-accent;
     }
@@ -322,33 +355,7 @@
 }
 
 .form__submit {
-  display: block;
-  margin: 0;
-  padding: 2.2rem;
-  width: 100%;
-  border: 2px solid $color-accent;
-  border-radius: 0;
-  font-family: "OpenSans", "Arial", sans-serif;
-  font-size: 1.5rem;
-  line-height: 1.33;
-  font-weight: 600;
-  letter-spacing: 0.1rem;
-  text-transform: uppercase;
-  color: $text-invert;
-  background-color: $color-accent;
-  cursor: pointer;
-  user-select: none;
-  transition: background-color 0.3s, color 0.3s;
-
   @media (min-width: $desktop-width) {
     margin-bottom: 3.4rem;
-  }
-
-  @media (hover: hover) {
-    &:hover,
-    &:focus {
-      color: $color-accent;
-      background-color: $bg-main-light2;
-    }
   }
 }
