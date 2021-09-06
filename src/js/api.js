@@ -1,4 +1,6 @@
-export default () => new Promise(resolve => {
-  if (Math.random() > 0.5) return resolve('ajax success');
-  else throw new Error('ajax error');
+export default () => new Promise((resolve, reject) => {
+  setTimeout(() => {
+    if (Math.random() > 0.2) resolve({ok: Math.random() > 0.2});
+    else reject(new Error('ajax error'));
+  }, 300);
 });

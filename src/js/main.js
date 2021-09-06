@@ -3,6 +3,9 @@ import validate from './validate.js';
 import ajax from './api.js';
 import Popup from './popup.js';
 
+const POPUP_SUCCESS = 'ajax-success';
+const POPUP_ERROR = 'ajax-error';
+
 const form = document.querySelector('.js-form');
 const popupElements = [...document.querySelectorAll('.js-popup')];
 
@@ -28,16 +31,19 @@ const submitForm = submittedForm => {
   const data = new FormData(submittedForm);
   // eslint-disable-next-line no-console
   for (const pair of data.entries()) console.log(`${pair[0]}: ${pair[1]}`);
-  submittedForm.reset();
   ajax(data)
-    .then(() => {
-      popups['ajax-success'].open();
-      form.reset();
+    .then(response => {
+      if (response.ok) {
+        popups[POPUP_SUCCESS].open();
+        form.reset();
+        return;
+      }
+      throw new Error('response error');
     })
     .catch(error => {
       // eslint-disable-next-line no-console
       console.log(error);
-      popups['ajax-error'].open();
+      popups[POPUP_ERROR].open();
     });
 };
 
