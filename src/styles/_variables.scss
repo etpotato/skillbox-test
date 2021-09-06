@@ -1,13 +1,27 @@
 
 /* COLORS */
-$text-main: #363636;
+$text-main: #000000;
+$text-invert: #ffffff;
+$text-neutral: #657195;
+$text-invert-neutral: #8b89ff;
+$bg-invert: #000000;
+$bg-main: #f6f7fd;
+$bg-main-ligth1: #fafbfe;
+$bg-main-light2: #ffffff;
 
-$bg-main: #f5deb3;
+$border: #e6e8f0;
+
+$shadow: rgba(168, 175, 196, 0.3);
+
+$color-accent: #3d3bff;
+
+$color-error: #e60000;
 
 /* MEDIA QUERIES */
 
-$desktop-width: 1200px;
-$tv-width: 1400px;
+$tablet-width: 768px;
+$desktop-width: 1280px;
 
-$mobile-container-width: 800px;
-$desktop-container-width: 1680px;
+$mobile-container-width: 540px;
+$tablet-container-width: 900px;
+$desktop-container-width: 1280px;

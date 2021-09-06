@@ -1,8 +1,21 @@
-:root {
-  --text: #3d3a3a;
+.page {
+  display: flex;
+  flex-direction: column;
+  min-width: 32rem;
+  min-height: 100vh;
+  font-family: "Roboto", "Arial", sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  font-weight: 400;
+  letter-spacing: -0.05rem;
+  color: $text-main;
+  background-color: $bg-main-light2;
+
+  @media (min-width: $tablet-width) {
+    background-color: $bg-main;
+  }
 }
 
-.page {
-  color: var(--text);
-  background-color: $bg-main;
+.page__main {
+  flex: 1 0 auto;
 }

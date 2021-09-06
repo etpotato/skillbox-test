@@ -1,0 +1,354 @@
+.form {
+  margin: 0;
+  padding: 4rem 0 0;
+  background-color: $bg-main-ligth1;
+
+  @media (min-width: $tablet-width) {
+    padding: 7rem 12.3rem 7.8rem;
+    box-shadow: 0 2px 24px $shadow;
+  }
+
+  @media (min-width: $desktop-width) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5.6rem 13rem 5.4rem 8.2rem;
+    box-shadow: none;
+  }
+}
+
+.form__title {
+  margin-top: 0;
+  margin-bottom: 2.5rem;
+  font-size: 3rem;
+  line-height: 1.2;
+  font-weight: 700;
+
+  @media (min-width: $tablet-width) {
+    margin-bottom: 3.2rem;
+    font-size: 3.8rem;
+    line-height: 1.26;
+    text-align: center;
+  }
+
+  @media (min-width: $desktop-width) {
+    margin-bottom: 2.4rem;
+    font-size: 3.4rem;
+    line-height: 1.17;
+    text-align: left;
+  }
+}
+
+.form__list {
+  @include list-reset;
+  margin-bottom: 3.2rem;
+
+  @media (min-width: $tablet-width) {
+    margin-bottom: 5.2rem;
+  }
+
+  @media (min-width: $desktop-width) {
+    margin-bottom: 4.4rem;
+  }
+}
+
+.form__item {
+  position: relative;
+  margin: 0;
+  margin-bottom: 1.5rem;
+  padding: 0;
+  padding-left: 2.2rem;
+  font-family: "OpenSans", "Arial", sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.73;
+  color: $text-neutral;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0.9rem;
+    left: 0;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+    background-color: $color-accent;
+  }
+}
+
+.form__text-wrap {
+  margin-bottom: 3.2rem;
+
+  @media (min-width: $tablet-width) {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    column-gap: 5rem;
+    row-gap: 1.8rem;
+    justify-content: center;
+    margin: 0 auto 2.8rem;
+  }
+
+  @media (min-width: $desktop-width) {
+    display: grid;
+    column-gap: 2.8rem;
+    justify-content: space-between;
+    margin: 0 auto 2.8rem;
+  }
+}
+
+.form__text {
+  margin-top: 0;
+  margin-bottom: 0.9rem;
+  color: $text-neutral;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: $tablet-width) {
+    margin-bottom: 0;
+  }
+}
+
+.form__text-accent {
+  font-size: 2rem;
+  font-weight: 700;
+  color: $color-accent;
+
+  &--desktop {
+    display: none;
+  }
+
+  @media (min-width: $desktop-width) {
+    display: none;
+
+    &--desktop {
+      display: inline;
+    }
+  }
+}
+
+.form__label {
+  position: relative;
+  display: block;
+  padding-bottom: 1.8rem;
+
+  @media (min-width: $tablet-width) {
+    &:last-of-type {
+      margin-bottom: 1.4rem;
+    }
+  }
+
+  @media (min-width: $tablet-width) {
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.form__input {
+  display: block;
+  width: 100%;
+  padding: 1.5rem 2.8rem;
+  border: 2px solid $border;
+  border-radius: 0;
+  font-family: "OpenSans", "Arial", sans-serif;
+  line-height: 1.87;
+  text-overflow: ellipsis;
+  color: $text-main;
+  background-color: transparent;
+  appearance: none;
+  outline: none;
+  transition: border-color 0.2s;
+
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:focus {
+    border-color: $color-accent;
+  }
+
+  &.invalid {
+    border-color: $color-error;
+
+    ~ .form__error {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
+.form__input:focus ~ .form__label-text,
+.form__input:not(:placeholder-shown) ~ .form__label-text {
+  top: 0.6rem;
+  color: $color-accent;
+  transform: scale(0.7);
+  transform-origin: 0 0;
+}
+
+.form__label-text {
+  position: absolute;
+  top: 2.4rem;
+  left: 2.8rem;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: $text-neutral;
+  transition: top 0.3s, color 0.3s, transform 0.3s;
+  cursor: text;
+}
+
+.form__error {
+  position: absolute;
+  bottom: 0.2rem;
+  left: 0;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: $color-error;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.form__submit-wrap {
+  @media (min-width: $desktop-width) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
+.form__consent {
+  position: relative;
+  display: block;
+  margin-bottom: 4.8rem;
+
+  @media (min-width: $tablet-width) {
+    margin-bottom: 2.8rem;
+  }
+
+  @media (min-width: $desktop-width) {
+    margin-bottom: 0;
+  }
+}
+
+.form__consent-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  border: none;
+  white-space: nowrap;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  overflow: hidden;
+  appearance: none;
+
+  &:checked {
+    & ~ .form__consent-text::after {
+      opacity: 1;
+    }
+  }
+
+  @media (min-width: $tablet-width) {
+    &:checked {
+      & ~ .form__consent-text {
+        &::before {
+          background-color: $color-accent;
+        }
+
+        &::after {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+.form__consent-text {
+  position: relative;
+  display: block;
+  padding-top: 0.2rem;
+  padding-left: 4rem;
+  font-family: "OpenSans", "Arial", sans-serif;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: $text-neutral;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2.4rem;
+    height: 2.4rem;
+    border: 2px solid $border;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2.4rem;
+    height: 2.4rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1.4rem 1.1rem;
+    background-image: url("../img/check.svg");
+    cursor: pointer;
+    opacity: 0;
+  }
+
+  @media (min-width: $tablet-width) {
+    padding-left: 3rem;
+    &::before {
+      border-color: $color-accent;
+    }
+
+    &::after {
+      filter: brightness(100);
+    }
+  }
+}
+
+.form__consent-link {
+  color: $color-accent;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.form__submit {
+  display: block;
+  margin: 0;
+  padding: 2.2rem;
+  width: 100%;
+  border: 2px solid $color-accent;
+  border-radius: 0;
+  font-family: "OpenSans", "Arial", sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.33;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  color: $text-invert;
+  background-color: $color-accent;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s, color 0.3s;
+
+  @media (min-width: $desktop-width) {
+    margin-bottom: 3.4rem;
+  }
+
+  @media (hover: hover) {
+    &:hover,
+    &:focus {
+      color: $color-accent;
+      background-color: $bg-main-light2;
+    }
+  }
+}

@@ -1,69 +1,88 @@
 {% extends 'templates/base.twig' %}
 
-{% block title %}Page title{% endblock %}
+{% block title %}Стоимость обучения{% endblock %}
 
 {% block page %}
   <main class="page__main main">
     <div class="container">
-      <h1 class="visually-hidden">Курсы SkillBox</h1>
+      <h1 class="main__title">
+        <span class="mobile-container">Стоимость обучения</span>
+      </h1>
       <div class="order">
-        <section class="price order__price">
-          <h2 class="price__title">Стоимость обучения</h2>
-          <div class="price__content">
-            <p class="price__lead">Скидка <br>40%
-              <span class="price__lead-dim">первым 20</span>
+        <div class="price order__price">
+          <div class="price__lead-wrap">
+            <p class="price__lead">
+              <span class="price__lead-name">Скидка</span>
+              <span class="price__lead-number">40%</span>
+              <span class="price__lead-count">первым 20</span>
             </p>
-            <dl class="price__list">
+          </div>
+          <dl class="price__list">
+            <div class="mobile-container">
               <div class="price__dim-item">
                 <dt class="price__term">Полная стоимость курса</dt>
-                <dd class="price__desc">50 000 &#x20bd;</dd>
+                <dd class="price__desc">50 000
+                  <span class="visually-hidden">рублей</span>
+                </dd>
               </div>
               <div class="price__bold-item">
                 <dt class="price__term">Рассрочка без первого взноса</dt>
-                <dd class="price__desc">2 900 &#x20bd;</dd>
+                <dd class="price__desc">2 900
+                  <span class="visually-hidden">рублей</span>
+                </dd>
               </div>
               <div class="price__thin-item">
                 <dt class="price__term">Первым 20-ти</dt>
-                <dd class="price__desc">29 000 &#x20bd;</dd>
+                <dt class="price__term price__term--desktop">Для первых  20-ти</dt>
+                <dd class="price__desc">29 000
+                  <span class="visually-hidden">рублей</span>
+                </dd>
               </div>
-            </dl>
-          </div>
-        </section>
+            </div>
+          </dl>
+        </div>
         <form class="form order__form" action="/" method="POST" enctype="application/x-www-form-urlencoded">
-          <h2 class="form__title">Запишитесь на&nbsp;курс</h2>
-          <ul class="form__list">
-          {% for set i in 0..3 %}
-            <li class="form__item">Телефон</li>
-          {% endfor %}
-          </ul>
-          <div class="form__text-wrap">
-            <p class="form__text">Старт курса
-              <span class="form__text-accent">15&nbsp;июня</span>
-            </p>
-            <p class="form__text">Осталось
-              <span class="form__text-accent">15&nbsp;мест</span>
-            </p>
-          </div>
-          <label class="form__label">
-            <input class="form__input" data-required="true" type="text" name="NAME" placeholder="Имя">
-            <span class="form__label-text">Имя</span>
-          </label>
-          <label class="form__label">
-            <input class="form__input" data-required="true" type="tel" name="TEL" placeholder="Телефон">
-            <span class="form__label-text">Телефон</span>
-          </label>
-          <label class="form__label">
-            <input class="form__input" data-required="true" type="email" name="EMAIL" placeholder="Email">
-            <span class="form__label-text" lang="en">Email</span>
-          </label>
-          <div class="form__submit-wrap">
-            <label class="form__consent">
-              <input class="form__consent-input" type="checkbox" name="CONSENT" value="true" checked>
-              <span class="form__consent-text">Я&nbsp;согласен с&nbsp;условиями обработки
-                  <a class="form__consent-link" href="assets/policy.pdf" target="_blank">персональных данных</a>
-              </span>
+          <div class="mobile-container">
+            <h2 class="form__title">Запишитесь на&nbsp;курс</h2>
+            <ul class="form__list">
+            {% for set i in 0..3 %}
+              <li class="form__item">Телефон</li>
+            {% endfor %}
+            </ul>
+            <div class="form__text-wrap">
+              <p class="form__text">Старт курса:
+                <time class="form__text-accent" datetime="06-15">15&nbsp;июня</time>
+                <time class="form__text-accent form__text-accent--desktop" datetime="09-07">&ensp;7&nbsp;сентября</time>
+              </p>
+              <p class="form__text">Осталось:
+                <span class="form__text-accent">15&nbsp;мест</span>
+                <span class="form__text-accent form__text-accent--desktop">19&nbsp;мест</span>
+              </p>
+            </div>
+            <label class="form__label">
+              <input class="form__input" data-required="true" type="text" name="NAME" placeholder="Имя">
+              <span class="form__label-text">Имя</span>
+              <span class="form__error">Пожалуйста, введите Ваше имя</span>
             </label>
-            <button class="form__submit" type="submit">Записаться</button>
+            <label class="form__label">
+              <input class="form__input" data-required="true" type="tel" name="TEL" inputmode="tel" placeholder="Телефон">
+              <span class="form__label-text">Телефон</span>
+              <span class="form__error">Введите номер телефона в формате 8 (999) 999-99-99</span>
+            </label>
+            <label class="form__label">
+              <input class="form__input" data-required="true" type="email" name="EMAIL" inputmode="email" placeholder="Email">
+              <span class="form__label-text" lang="en">Email</span>
+              <span class="form__error">Введите Ваш email</span>
+            </label>
+            <div class="form__submit-wrap">
+              <label class="form__consent">
+                <input class="form__consent-input" type="checkbox" name="CONSENT" value="true" checked>
+                <span class="form__consent-text">Я&nbsp;согласен с&nbsp;условиями обработки
+                    <a class="form__consent-link" href="assets/google_privacy_policy_en.pdf" target="_blank">персональных данных</a>
+                </span>
+              </label>
+              <button class="form__submit" type="submit">Записаться</button>
+            </div>
           </div>
         </form>
       </div>
