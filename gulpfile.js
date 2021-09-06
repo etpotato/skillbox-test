@@ -132,7 +132,7 @@ const copyFonts = () => {
     .pipe(sync.stream());
 };
 const copyImages = () => {
-  return gulp.src('./src/img/*', {ignore: './src/img/sprite/'})
+  return gulp.src('./src/img/**/*', {ignore: './src/img/sprite/'})
     .pipe(gulp.dest('./build/img/'))
     .pipe(sync.stream());
 };
@@ -141,7 +141,7 @@ const copy = gulp.parallel(copyAssets, copyFonts, copyImages);
 
 /* images */
 const webp = () => {
-  return gulp.src('./src/img/**/*.{png,jpg}', {ignore: './src/img/favicon/'})
+  return gulp.src('./src/img/**/*.{png,jpg}', {ignore: './src/img/favicon/*'})
   .pipe(gulpWebp())
   .pipe(gulp.dest('./build/img/'));
 };
